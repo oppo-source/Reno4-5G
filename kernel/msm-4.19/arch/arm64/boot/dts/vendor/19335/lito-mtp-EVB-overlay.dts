@@ -1,0 +1,29 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include "lito-mtp.dtsi"
+
+&cam_cci0 {
+	qcom,cam-sensor@4 {
+		csiphy-sd-index = <2>;
+		gpios = <&tlmm 16 0>,
+			<&tlmm 23 0>,
+			<&tlmm 125 0>;
+		gpio-custom1 = <2>;
+		gpio-req-tbl-num = <0 1 2>;
+		gpio-req-tbl-flags = <1 0 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK4",
+					"CAM_RESET4",
+					"CAM_CUSTOM1";
+	};
+};
+
+/ {
+	model = "Qualcomm Technologies, Inc. Lito MTP";
+	compatible = "qcom,lito-mtp", "qcom,lito", "qcom,mtp";
+	qcom,msm-id = <400 0x10000>;
+	qcom,board-id = <8 0>;
+	oppo,dtsi_no = <19335>;
+	oppo,hadware-id = "EVT2";
+};
